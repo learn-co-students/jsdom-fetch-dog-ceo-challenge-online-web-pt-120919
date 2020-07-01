@@ -1,5 +1,5 @@
 console.log('%c HI', 'color: firebrick')
-
+// images -----------------------------------
 function fetchImage(){
     return fetch("https://dog.ceo/api/breeds/image/random/4")
     .then(resp => resp.json())
@@ -22,6 +22,33 @@ function renderImages(images) {
     dogPic.appendChild(imageTag)
   }
 
+  function fetchImage(){
+    return fetch("https://dog.ceo/api/breeds/image/random/4")
+    .then(resp => resp.json())
+    .then(json => renderImages(json))
+}
+// breeds ----------------------------------------------
+function fetchBreed(){
+    return fetch('https://dog.ceo/api/breeds/list/all')
+    .then(resp => resp.json())
+    .then(json => renderBreed(json))
+}
+
+function renderBreed(breeds){
+    const breedArray = breeds.message
+    for (const breed in breedArray){
+        appendBreed(breed)
+    }
+}
+
+function appendBreed(breed){
+    const ul = document.getElementById('dog-breeds')
+    const li = document.createElement('li')
+    li.innerHTML = breed
+    ul.appendChild(li)
+}
+
   document.addEventListener('DOMContentLoaded', function() {
     fetchImage()
+    fetchBreed()
   })
