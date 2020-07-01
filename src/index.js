@@ -39,6 +39,7 @@ function renderBreed(breeds){
     for (const breed in breedArray){
         appendBreed(breed)
     }
+    
 }
 
 function appendBreed(breed){
