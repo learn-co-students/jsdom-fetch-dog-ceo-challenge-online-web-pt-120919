@@ -37,9 +37,13 @@ function fetchBreed(){
 function renderBreed(breeds){
     const breedArray = breeds.message
     for (const breed in breedArray){
+        if (`${breedArray[breed]}`){
+        appendBreed(`${breed} types: ${breedArray[breed]}`)
+        }
+        else
         appendBreed(breed)
     }
-    
+
 }
 
 function appendBreed(breed){
@@ -47,7 +51,11 @@ function appendBreed(breed){
     const li = document.createElement('li')
     li.innerHTML = breed
     ul.appendChild(li)
+    li.addEventListener('click', function(){
+        li.style.color = '#ff8686' 
+    })
 }
+
 
   document.addEventListener('DOMContentLoaded', function() {
     fetchImage()
