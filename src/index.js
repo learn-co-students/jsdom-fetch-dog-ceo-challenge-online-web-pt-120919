@@ -3,20 +3,19 @@ console.log('%c HI', 'color: firebrick')
 // on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadImages();
-    loadBreedOptions();
+    loadBreedOptions(); //on page load, fetch all the dog breeds using the url above
 });
 
-//fetch the images using the url above
 function loadImages() {
-    const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
+    const imgUrl = "https://dog.ceo/api/breeds/image/random/4" //fetch the images using the url above
     fetch(imgUrl)
         .then(response => response.json())
-        .then(json => {
-            json.message.forEach(image => addImage(image))
+        .then(json => { // parse the response as JSON
+            json.message.forEach(image => addImage(image)) // add image elements to the DOM for each image in the array
         });
 }
 
-function addImage(dogPicUrl) {
+function addImage(dogPicUrl) { // add image elements to the DOM for each image in the array
     let imgContainer = document.querySelector('#dog-image-container');
     let newImageElement = document.createElement('img');
     newImageElement.src = dogPicUrl;
@@ -60,16 +59,16 @@ function addImage(dogPicUrl) {
     });
   }
   
-  function addBreed(breed) {
+  function addBreed(breed) { //add the breeds to the page in an <ul>
     let ul = document.querySelector('#dog-breeds');
     let li = document.createElement('li');
     li.innerText = breed;
     ul.appendChild(li);
-    li.addEventListener('click', changeColor);
+    li.addEventListener('click', changeColor); //Once all of the breeds are rendered in the <ul>, add JavaScript so that the font color of a particular <li> changes on click
   }
   
   function changeColor(event) {
-    event.target.style.color = 'blue';
+    event.target.style.color = 'blue'; 
   }
 
 // parse the response as JSON
