@@ -19,7 +19,7 @@ function addImage(dogPicUrl) { // add image elements to the DOM for each image i
     let imgContainer = document.querySelector('#dog-image-container');
     let newImageElement = document.createElement('img');
     newImageElement.src = dogPicUrl;
-    imgContainer.appendChild(newImageEl);
+    imgContainer.appendChild(newImageElement);
 }
   
   function loadBreedOptions() {
