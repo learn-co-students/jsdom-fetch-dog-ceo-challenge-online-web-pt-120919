@@ -8,12 +8,14 @@ const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 function fetchImage(){
     return fetch(imageUrl)
     .then(resp => resp.json())
-    .then(json => renderImages(json))
+    .then(json => 
+      renderImages(json))
 }
 
 function renderImages(images) {
+  // console.log(images) images array is under messages
     const imagesMessage = images.message
-    
+    // console.log(imagesMessage)
     for (const image of imagesMessage){
         appendImage(image)
     }
@@ -23,8 +25,10 @@ function renderImages(images) {
     const dogPic = document.getElementById('dog-image-container')
     const imageTag = document.createElement('img')
     
-    imageTag.src = image
-    dogPic.appendChild(imageTag)
+    imageTag.src = image 
+    // image is where image is located
+    dogPic.appendChild(imageTag) 
+    // puts the image on the DOM
   }
 
 
@@ -37,6 +41,8 @@ function fetchDogBreeds() {
       .then(response => response.json())
       .then(json => {
         // the return value is an Array containing all of the keys at the top level of the Object
+
+        console.log(json)
         breeds = Object.keys(json.message)
         // display all dog breeds on page
         renderDogBreeds(breeds)
